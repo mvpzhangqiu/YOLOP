@@ -7,14 +7,14 @@ _C = CN()
 _C.LOG_DIR = 'runs/'
 _C.GPUS = (0,1)     
 _C.WORKERS = 8
-_C.PIN_MEMORY = False
+_C.PIN_MEMORY = False  # 锁内存，将数据存储块从可分页内存转为锁内存，加快读取速度。一般设置为True
 _C.PRINT_FREQ = 20
 _C.AUTO_RESUME =False       # Resume from the last training interrupt
 _C.NEED_AUTOANCHOR = False      # Re-select the prior anchor(k-means)    When training from scratch (epoch=0), set it to be ture!
 _C.DEBUG = False
 _C.num_seg_class = 2
 
-# Cudnn related params
+# Cudnn related params, Cudnn CUDA Deep Neural Network library, 用于深层神经网络的GPU加速库
 _C.CUDNN = CN()
 _C.CUDNN.BENCHMARK = True
 _C.CUDNN.DETERMINISTIC = False
@@ -36,7 +36,7 @@ _C.MODEL.EXTRA = CN(new_allowed=True)
 _C.LOSS = CN(new_allowed=True)
 _C.LOSS.LOSS_NAME = ''
 _C.LOSS.MULTI_HEAD_LAMBDA = None
-_C.LOSS.FL_GAMMA = 0.0  # focal loss gamma
+_C.LOSS.FL_GAMMA = 0.0  # focal loss gamma, gamma主要负责控制简单样本权重降低的速率，alpha用于平衡样本数量分布不平衡问题
 _C.LOSS.CLS_POS_WEIGHT = 1.0  # classification loss positive weights
 _C.LOSS.OBJ_POS_WEIGHT = 1.0  # object loss positive weights
 _C.LOSS.SEG_POS_WEIGHT = 1.0  # segmentation loss positive weights
